@@ -33,8 +33,14 @@ Photo titles
 
 In addition, if there is a record named *Descript.ion present in the directory, (such as that produced from Fotopic), this is read and the Caption for each Image is used as the Piwigo Image Title. These entries consist of lines containing the Image Filename and Caption, separated by a Tab. The default name of this record can be changed to another text file name.
 
+Windows users
+-------------
+
+To run the Perl Script, go to “Start” then “Run” then “Cmd” to open a Command Window. Use “cd” to change to an appropriate directory.  This is useful to go to the top of the tree. Then type the command line as in the example above (best to prepare it and copy & paste).
+
+The command window will then scroll a list of the albums and images written to Piwigo. Each JPG image is transferred full-size.
+
 Run many times to synchronize
 -----------------------------
 
 The most useful part of this facility is that you can add more albums, images and descriptions to the tree structure and then re-run the script when just the new images will be transferred.
-
