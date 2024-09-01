@@ -55,6 +55,10 @@ my $album_dir = $opt{directory};
 $album_dir =~ s{^\./*}{};
 
 our $ua = LWP::UserAgent->new;
+$ua->ssl_opts(
+    SSL_verify_mode => 0,
+    verify_hostname => 0
+);
 $ua->agent('Mozilla/piwigo_remote.pl 1.25');
 $ua->cookie_jar({});
 
@@ -125,7 +129,7 @@ find({wanted => \&add_to_piwigo, no_chdir => 1}, $album_dir);
 #---------------------------------------------------------------------
 
 sub piwigo_login {
-    $ua->post(
+    my $response = $ua->post(
         $conf{base_url}.'/ws.php?format=json',
         {
             method => 'pwg.session.login',
@@ -133,6 +137,8 @@ sub piwigo_login {
             password => $conf{password},
         }
     );
+
+    # print Dumper($response);
 }
 
 sub fill_photos_of_album {
